@@ -126,7 +126,11 @@ class SmsApiSmsTunnel(SmsApiBase):
         if marketing_test:
             # The wizard leaves its texts in the queue: close them, or the SMS queue cron would send them.
             self.env['sms.sms'].sudo().browse([sms.id for sms in sms_by_uuid.values()]).filtered(
-                lambda sms: sms.state == 'outgoing').write({'state': 'error', 'failure_type': 'unknown'})
+                lambda sms: sms.state == 'outgoing').write({
+                    'state': 'error',
+                    'failure_type': 'unknown',
+                    'smstunnel_failure_reason': self._get_sms_api_error_messages()['smstunnel_marketing'],
+                })
         if waiting:
             company._smstunnel_wait(waiting)
         elif accepted:
