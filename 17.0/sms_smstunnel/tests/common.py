@@ -126,5 +126,9 @@ class SmsTunnelCase(TransactionCase):
         ).create({'body': body})
         return composer._action_send_sms()
 
+    def process_queue(self):
+        """Run what the SMS queue cron runs."""
+        self.env['sms.sms'].sudo()._process_queue()
+
     def sms_notification(self, message):
         return message.notification_ids.filtered(lambda n: n.notification_type == 'sms')

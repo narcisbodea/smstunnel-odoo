@@ -77,11 +77,12 @@ class SmsSmsTunnelAccountManage(models.TransientModel):
             return self._notify('warning', _(
                 "The key works, but no phone is linked to this SMSTunnel account yet. Install the SMSTunnel app "
                 "from Google Play on your Android phone and sign in, or link it under Phones → Add phone."))
-        phones = ', '.join(
-            _('%(name)s (%(state)s, ID %(id)s)', name=device.get('name') or _('Phone'),
-              state=_('online') if device.get('isOnline') else _('offline'), id=device.get('id'))
-            for device in devices)
-        message = _("The key works. Phones: %(phones)s.", phones=phones)
+        # A plain loop: _() finds the user's language in this method's frame, not in a generator's.
+        phones = []
+        for device in devices:
+            phones.append(_('%(name)s (%(state)s, ID %(id)s)', name=device.get('name') or _('Phone'),
+                            state=_('online') if device.get('isOnline') else _('offline'), id=device.get('id')))
+        message = _("The key works. Phones: %(phones)s.", phones=', '.join(phones))
         device_id = (self.smstunnel_device_id or '').strip()
         if device_id and device_id not in {device.get('id') for device in devices}:
             return self._notify('warning', message + ' ' + _(
