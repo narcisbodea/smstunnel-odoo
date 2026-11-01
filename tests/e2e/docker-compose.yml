@@ -1,0 +1,58 @@
+# Local test stack: Odoo 17, 18 and 19 with the module mounted read-only, on one PostgreSQL.
+# Start:    docker compose -p smst-int-odoo -f tests/e2e/docker-compose.yml up -d
+# Tear down: docker compose -p smst-int-odoo -f tests/e2e/docker-compose.yml down -v
+name: smst-int-odoo
+
+x-odoo: &odoo
+  depends_on: [db]
+  environment:
+    HOST: db
+    USER: odoo
+    PASSWORD: odoo
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  mem_limit: 1500m
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    mem_limit: 1g
+
+  odoo17:
+    <<: *odoo
+    image: odoo:17
+    ports: ["127.0.0.1:8571:8069"]
+    volumes:
+      - ../../17.0:/mnt/extra-addons:ro
+      - .:/mnt/e2e:ro
+      - odoo17:/var/lib/odoo
+
+  odoo18:
+    <<: *odoo
+    image: odoo:18
+    ports: ["127.0.0.1:8572:8069"]
+    volumes:
+      - ../../18.0:/mnt/extra-addons:ro
+      - .:/mnt/e2e:ro
+      - odoo18:/var/lib/odoo
+
+  odoo19:
+    <<: *odoo
+    image: odoo:19
+    ports: ["127.0.0.1:8573:8069"]
+    volumes:
+      - ../../19.0:/mnt/extra-addons:ro
+      - .:/mnt/e2e:ro
+      - odoo19:/var/lib/odoo
+
+volumes:
+  db:
+  odoo17:
+  odoo18:
+  odoo19:
