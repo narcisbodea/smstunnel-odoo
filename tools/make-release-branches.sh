@@ -13,5 +13,5 @@ fi
 for v in 17.0 18.0 19.0; do
   commit="$(git subtree split --prefix="$v")"
   git branch -f "$v" "$commit"
-  echo "$v -> $(git log -1 --format='%h %s' "$v")"
+  echo "$v -> $(git log -1 --format='%h %s' "refs/heads/$v" --)"
 done
