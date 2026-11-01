@@ -150,14 +150,14 @@ class TestSmsTunnelSend(SmsTunnelCase):
 
         # While waiting, the queue does not call SMSTunnel at all.
         with self.mock_smstunnel():
-            self.env['sms.sms'].sudo()._process_queue()
+            self.process_queue()
         self.assertFalse(self.smstunnel_requests)
         self.assertEqual(set(sms.mapped('state')), {'outgoing'})
 
         # SMSTunnel is back.
         self.company.smstunnel_retry_at = fields.Datetime.now() - timedelta(seconds=1)
         with self.mock_smstunnel():
-            self.env['sms.sms'].sudo()._process_queue()
+            self.process_queue()
         self.assertEqual(len(self.smstunnel_requests), 2)
         self.assertEqual(set(sms.mapped('state')), {'pending'})
         self.assertFalse(self.company.smstunnel_retry_at)
@@ -275,7 +275,7 @@ class TestSmsTunnelMarketing(SmsTunnelCase):
         with self.mock_smstunnel():
             wizard.action_send_sms()
             # The wizard's texts are closed, so the SMS queue does not send them later either.
-            self.env['sms.sms'].sudo()._process_queue()
+            self.process_queue()
         self.assertFalse(self.smstunnel_requests)
         self.assertIn(MARKETING_REFUSAL, self.mailing.message_ids[0].body)
         self.assertFalse(self.env['sms.sms'].sudo().search([('number', '=', '+40721234567'), ('state', '=', 'outgoing')]))
