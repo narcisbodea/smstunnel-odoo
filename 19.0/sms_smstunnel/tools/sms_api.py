@@ -84,7 +84,9 @@ class SmsApiSmsTunnel(SmsApiBase):
         waiting = None  # set when SMSTunnel can't take texts right now: the other texts stay in the queue
         accepted = False
         for message in messages:
-            body = message.get('content') or ''
+            # Templates often render with the indentation of their XML around the text (Inventory's delivery
+            # text starts with a new line and 16 spaces): the phone would send it as is.
+            body = (message.get('content') or '').strip()
             for number_info in message.get('numbers') or []:
                 uuid = number_info['uuid']
                 if waiting:
@@ -99,7 +101,7 @@ class SmsApiSmsTunnel(SmsApiBase):
                     results.append(self._failure(uuid, 'smstunnel_not_set_up'))
                 elif not number:
                     results.append(self._failure(uuid, 'sms_number_missing'))
-                elif not body.strip():
+                elif not body:
                     results.append(self._failure(uuid, 'smstunnel_empty'))
                 elif len(body) > (MAX_CODE_TEXT_LENGTH if sign_in_code else MAX_TEXT_LENGTH):
                     results.append(self._failure(uuid, 'smstunnel_too_long'))
@@ -157,7 +159,7 @@ class SmsApiSmsTunnel(SmsApiBase):
             state = 'smstunnel_plan'
         elif error.status == 403:
             state = 'smstunnel_not_allowed'
-        elif error.status == 404:
+        elif error.status == 404 and 'device' in message.lower():
             state = 'smstunnel_phone'
         elif error.is_number_error:
             state = 'wrong_number_format'

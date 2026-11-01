@@ -50,6 +50,11 @@ class TestSmsTunnelSend(SmsTunnelCase):
             'defaultCountryCode': '40',
         })
 
+    def test_text_is_trimmed(self):
+        with self.mock_smstunnel():
+            self.send_to_number('+40721234567', body='\n                Your order has been shipped.\n            ')
+        self.assertEqual(self.smstunnel_requests[0]['json']['message'], 'Your order has been shipped.')
+
     def test_one_request_per_number(self):
         with self.mock_smstunnel():
             sms = self.send_to_number('+40721234567,+40721234568,+40721234569')
@@ -87,6 +92,8 @@ class TestSmsTunnelSend(SmsTunnelCase):
             (self.refused(400, 'Sending to short/premium numbers is blocked for security', 'Bad Request'),
              'sms_number_format', 'premium numbers'),
             (self.refused(404, 'Device not found', 'Not Found'), 'unknown', 'Phone ID'),
+            (self.refused(404, 'Cannot POST /api/v1/sms/send', 'Not Found'), 'unknown', 'Cannot POST'),
+            ((301, None, {'Location': 'https://smstunnel.test/api/v1/sms/send'}), 'unknown', 'redirect'),
             (self.refused(400, ['message must be shorter than or equal to 1600 characters'], 'Bad Request'),
              'unknown', 'message must be shorter'),
         ]:

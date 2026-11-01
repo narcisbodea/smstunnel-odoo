@@ -6,9 +6,12 @@
     'description': """
 SMSTunnel SMS
 =============
-Odoo's texts (Send SMS on contacts, delivery confirmations, SMS templates, automated actions) go out
-from your own Android phone, from your own number, with the SMSTunnel app. Choose "Send via SMSTunnel"
-in Settings → General Settings → Send SMS.
+Odoo's texts (the SMS button on contacts, delivery confirmations, SMS templates, automated actions) go
+out from your own Android phone, from your own number. Choose "Send via SMSTunnel" in Settings, General
+Settings, Send SMS.
+
+Needs an SMSTunnel account (smstunnel.io) and the SMSTunnel app on an Android phone. Odoo sends each
+text and its number to SMSTunnel, which hands it to your phone. Privacy policy: https://smstunnel.io/privacy
 """,
     'author': 'NARBOWEB SRL',
     'maintainer': 'Narcis Bodea <contact@narboweb.ro>',

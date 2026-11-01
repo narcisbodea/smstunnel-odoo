@@ -1,0 +1,587 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sms_smstunnel
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0-20261015\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-01 22:37+0000\n"
+"PO-Revision-Date: 2026-11-01 22:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid "%(explanation)s Last answer: %(message)s"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid "%(explanation)s SMSTunnel said: %(message)s"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "%(message)s. Try again in a moment."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "%(name)s (%(state)s, ID %(id)s)"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/models/res_company.py:0
+msgid ""
+"Add your SMSTunnel API key first (Apps → Add an app in your SMSTunnel "
+"dashboard)."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Check it"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Check the key and list my phones"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model,name:sms_smstunnel.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__company_id
+msgid "Company"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,help:sms_smstunnel.field_res_company__smstunnel_country_code
+#: model:ir.model.fields,help:sms_smstunnel.field_sms_smstunnel_account_manage__smstunnel_country_code
+msgid ""
+"Completes numbers written without + or 00, such as 0721 123 456. Empty: the "
+"calling code of the company's country."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model,name:sms_smstunnel.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.res_config_settings_view_form
+msgid "Configure SMSTunnel"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Connection"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_company__smstunnel_country_code
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__smstunnel_country_code
+msgid "Default country code"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Discard"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_company__display_name
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_sms__display_name
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__display_name
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_tracker__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid ""
+"Empty: +%(code)s, the calling code of %(country)s (the company's country)."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "Empty: the country set for your phone in SMSTunnel."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Empty: your main phone"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,help:sms_smstunnel.field_sms_sms__smstunnel_sign_in_code
+msgid ""
+"For custom code that sends sign-in or verification codes: SMSTunnel sends "
+"the text through its sign-in code service, with its own daily allowance. The"
+" text must contain the code (4 to 10 digits, or 123-456) and be at most 320 "
+"characters."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "For numbers written without + or 00, such as 0721 123 456."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,help:sms_smstunnel.field_sms_sms__smstunnel_tries
+msgid ""
+"How many times SMSTunnel could not be reached for this text. It stays in the"
+" queue until it has been tried 8 times."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_company__id
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_config_settings__id
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_sms__id
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__id
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_tracker__id
+msgid "ID"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid ""
+"In the dashboard, open <b>Apps → Add an app</b>, create the key and paste it"
+" below."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Install the"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model,name:sms_smstunnel.model_sms_tracker
+msgid "Link SMS to mailing/sms tracking models"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid ""
+"Odoo sends each text and its number to SMSTunnel (smstunnel.io), which hands"
+" it to your phone."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid ""
+"Odoo's texts go out from <b>your own Android phone</b>, from <b>your own number</b>:\n"
+"                        customers see a number they know and can reply to it. You pay your carrier's usual price."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model,name:sms_smstunnel.model_sms_sms
+msgid "Outgoing SMS"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "Phone"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_company__smstunnel_device_id
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__smstunnel_device_id
+msgid "Phone ID"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Privacy policy"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_company__sms_provider
+msgid "SMS Provider"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/models/res_company.py:0
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "SMSTunnel"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_company__smstunnel_api_key
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__smstunnel_api_key
+msgid "SMSTunnel API key"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model,name:sms_smstunnel.model_sms_smstunnel_account_manage
+msgid "SMSTunnel Connection Wizard"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "SMSTunnel app from Google Play"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "SMSTunnel asks to slow down. Try again in %(seconds)s seconds."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_tracker__smstunnel_company_id
+msgid "SMSTunnel company"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid ""
+"SMSTunnel could not be reached, even after several tries. Resend the text "
+"when it is back."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid ""
+"SMSTunnel could not find the phone (%(message)s). Check the Phone ID, or "
+"leave it empty to use your main phone."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid ""
+"SMSTunnel could not find the phone set as Phone ID. Copy the ID again under "
+"Phones in your SMSTunnel dashboard, or leave it empty to send from your main"
+" phone."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid ""
+"SMSTunnel did not accept the API key (%(message)s). Copy it again from Apps "
+"in your SMSTunnel dashboard."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid ""
+"SMSTunnel did not accept the API key. Check it in Settings → General "
+"Settings → Send SMS → Configure SMSTunnel."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "SMSTunnel did not allow it: %(message)s"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid "SMSTunnel did not allow this text with this API key."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_sms__smstunnel_failure_reason
+msgid "SMSTunnel failure reason"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid ""
+"SMSTunnel isn't set up yet: add your API key in Settings → General Settings "
+"→ Send SMS → Configure SMSTunnel."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_sms__smstunnel_message_id
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_tracker__smstunnel_message_id
+msgid "SMSTunnel message ID"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "SMSTunnel refused it: %(message)s"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid "SMSTunnel refused the text."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid ""
+"SMSTunnel sends texts people expect (order and delivery updates, reminders, replies),\n"
+"                    one text per number. It does not send SMS Marketing mailings."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid ""
+"SMSTunnel sends texts people expect, one at a time; use it for transactional"
+" texts, not SMS marketing."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_tracker__smstunnel_status
+msgid "SMSTunnel status"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_tracker__smstunnel_checked_at
+msgid "SMSTunnel status checked at"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid ""
+"SMSTunnel took the test text for %(number)s and your phone is sending it "
+"now."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid ""
+"SMSTunnel took the test text for %(number)s. Your phone is offline right "
+"now: the text goes out as soon as it is back online."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_sms__smstunnel_tries
+msgid "SMSTunnel tries"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_company__smstunnel_failures
+msgid "SMSTunnel: failures in a row"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.actions.server,name:sms_smstunnel.ir_cron_smstunnel_status_ir_actions_server
+msgid "SMSTunnel: follow the status of sent texts"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_res_company__smstunnel_retry_at
+msgid "SMSTunnel: retry at"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Save"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Send a test text"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "Send a test text to your own number."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields.selection,name:sms_smstunnel.selection__res_company__sms_provider__smstunnel
+msgid "Send via SMSTunnel"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_sms__smstunnel_sign_in_code
+msgid "Sign-in code"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__smstunnel_country_code_hint
+msgid "Smstunnel Country Code Hint"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,field_description:sms_smstunnel.field_sms_smstunnel_account_manage__test_number
+msgid "Test number"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.res_config_settings_view_form
+msgid ""
+"Texts go out from your own Android phone and number, with the SMSTunnel app."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid ""
+"The Phone ID set here is not one of them: copy it again, or leave it empty."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/models/res_company.py:0
+msgid ""
+"The default country code must be a calling code such as +40, 40 or 0040."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,help:sms_smstunnel.field_res_company__smstunnel_api_key
+#: model:ir.model.fields,help:sms_smstunnel.field_sms_smstunnel_account_manage__smstunnel_api_key
+msgid ""
+"The key of an app in your SMSTunnel dashboard (Apps → Add an app). It is "
+"shown only once there."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid ""
+"The key works, but no phone is linked to this SMSTunnel account yet. Install"
+" the SMSTunnel app from Google Play on your Android phone and sign in, or "
+"link it under Phones → Add phone."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "The key works. Phones: %(phones)s."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid ""
+"The number is not valid. Write it in international format, with + and the "
+"country code."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid "The text is empty."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid ""
+"The text is too long: SMSTunnel takes up to %(text)s characters (%(code)s "
+"for a sign-in code)."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid "There is no number to send the text to."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid ""
+"This is a test text from Odoo, sent through SMSTunnel from your own phone."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "Type the number that should get the test text."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model:ir.model.fields,help:sms_smstunnel.field_res_company__smstunnel_device_id
+#: model:ir.model.fields,help:sms_smstunnel.field_sms_smstunnel_account_manage__smstunnel_device_id
+msgid ""
+"Which of your phones sends the texts. Empty: your main phone. Copy a phone's"
+" ID under Phones in your SMSTunnel dashboard."
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/tools/sms_api.py:0
+msgid "Your SMSTunnel plan does not cover this text."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "dashboard.smstunnel.io"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "e.g. +40"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "offline"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "on your Android phone and sign in. Sign in at"
+msgstr ""
+
+#. module: sms_smstunnel
+#. odoo-python
+#: code:addons/sms_smstunnel/wizard/sms_smstunnel_account_manage.py:0
+msgid "online"
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "sk_live_..."
+msgstr ""
+
+#. module: sms_smstunnel
+#: model_terms:ir.ui.view,arch_db:sms_smstunnel.sms_smstunnel_account_manage_view_form
+msgid "with the same account: the phone appears under <b>Phones</b>."
+msgstr ""
