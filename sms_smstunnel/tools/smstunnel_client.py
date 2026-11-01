@@ -148,7 +148,9 @@ class SmsTunnelClient:
             headers['Content-Type'] = 'application/json'
         url = self.server_url + path
         try:
-            response = self._session.request(method, url, json=json_body, headers=headers, timeout=TIMEOUT)
+            # No redirects: a redirected POST becomes a GET, and the key would follow it to another host.
+            response = self._session.request(
+                method, url, json=json_body, headers=headers, timeout=TIMEOUT, allow_redirects=False)
         except requests.exceptions.Timeout:
             raise SmsTunnelError('SMSTunnel did not answer in time', transient=True) from None
         except requests.exceptions.RequestException as error:
@@ -161,6 +163,11 @@ class SmsTunnelClient:
         except ValueError:
             body = response.text
 
+        if 300 <= response.status_code < 400:
+            raise SmsTunnelError(
+                'SMSTunnel answered with a redirect (%s to %s): check the server address' % (
+                    response.status_code, response.headers.get('Location') or '?'),
+                status=response.status_code)
         if response.status_code >= 400:
             message = error_message_of(body, response.status_code)
             code = body.get('code') if isinstance(body, dict) else None
