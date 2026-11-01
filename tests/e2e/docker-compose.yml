@@ -28,6 +28,7 @@ services:
     <<: *odoo
     image: odoo:17
     ports: ["127.0.0.1:8571:8069"]
+    command: ["odoo", "-d", "smst17", "--db-filter", "^smst17$"]
     volumes:
       - ../../17.0:/mnt/extra-addons:ro
       - .:/mnt/e2e:ro
@@ -37,6 +38,7 @@ services:
     <<: *odoo
     image: odoo:18
     ports: ["127.0.0.1:8572:8069"]
+    command: ["odoo", "-d", "smst18", "--db-filter", "^smst18$"]
     volumes:
       - ../../18.0:/mnt/extra-addons:ro
       - .:/mnt/e2e:ro
@@ -46,6 +48,7 @@ services:
     <<: *odoo
     image: odoo:19
     ports: ["127.0.0.1:8573:8069"]
+    command: ["odoo", "-d", "smst19", "--db-filter", "^smst19$"]
     volumes:
       - ../../19.0:/mnt/extra-addons:ro
       - .:/mnt/e2e:ro

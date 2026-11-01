@@ -6,10 +6,22 @@
         <field name="inherit_id" ref="sms.sms_tsms_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='failure_type']" position="after">
+                <field name="smstunnel_failure_reason" invisible="not smstunnel_failure_reason"/>
                 <field name="smstunnel_message_id" invisible="not smstunnel_message_id"/>
                 <field name="smstunnel_tries" invisible="not smstunnel_tries"/>
                 <field name="smstunnel_sign_in_code" invisible="not smstunnel_sign_in_code"/>
             </xpath>
+        </field>
+    </record>
+
+    <record id="sms_sms_view_list" model="ir.ui.view">
+        <field name="name">sms.sms.view.list.inherit.smstunnel</field>
+        <field name="model">sms.sms</field>
+        <field name="inherit_id" ref="sms.sms_sms_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="failure_type" position="after">
+                <field name="smstunnel_failure_reason" optional="show"/>
+            </field>
         </field>
     </record>
 </odoo>

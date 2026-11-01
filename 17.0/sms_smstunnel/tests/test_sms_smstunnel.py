@@ -100,7 +100,17 @@ class TestSmsTunnelSend(SmsTunnelCase):
                 sms = self.env['sms.sms'].sudo().search([('mail_message_id', '=', message.id)])
                 self.assertEqual(sms.state, 'error')
                 self.assertEqual(sms.failure_type, failure_type)
+                self.assertIn(words, sms.smstunnel_failure_reason, 'The reason is kept on the text too')
                 self.assertFalse(sms.to_delete, 'Failed texts stay visible')
+
+    def test_sending_failures_dialog(self):
+        """The chatter's "Sending Failures" dialog shows SMSTunnel's reason and no Odoo credits button."""
+        with self.mock_smstunnel(self.refused(401, 'Invalid or expired API key', 'Unauthorized')):
+            message = self.send_to_partner(self.partner)
+        wizard = self.env['sms.resend'].with_context(default_mail_message_id=message.id).create({})
+        self.assertTrue(wizard.smstunnel)
+        self.assertTrue(wizard.has_unregistered_account, 'Odoo still offers to resend once the key is fixed')
+        self.assertIn('Invalid or expired API key', wizard.recipient_ids.failure_reason)
 
     def test_not_set_up(self):
         self.company.smstunnel_api_key = False
@@ -279,6 +289,8 @@ class TestSmsTunnelMarketing(SmsTunnelCase):
         self.assertFalse(self.smstunnel_requests)
         self.assertIn(MARKETING_REFUSAL, self.mailing.message_ids[0].body)
         self.assertFalse(self.env['sms.sms'].sudo().search([('number', '=', '+40721234567'), ('state', '=', 'outgoing')]))
+        closed = self.env['sms.sms'].sudo().search([('number', '=', '+40721234567'), ('state', '=', 'error')])
+        self.assertEqual(closed.smstunnel_failure_reason, MARKETING_REFUSAL)
 
 
 @tagged('post_install', '-at_install', 'sms_smstunnel')

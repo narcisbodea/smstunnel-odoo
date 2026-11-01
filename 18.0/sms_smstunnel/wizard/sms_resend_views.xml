@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- "Sending Failures": show SMSTunnel's reason, and hide Odoo's "Buy credits" (1st) and "Set up an account" (2nd). -->
+    <record id="sms_resend_view_form" model="ir.ui.view">
+        <field name="name">sms.resend.form.inherit.smstunnel</field>
+        <field name="model">sms.resend</field>
+        <field name="inherit_id" ref="sms.mail_resend_message_view_form"/>
+        <field name="arch" type="xml">
+            <field name="has_unregistered_account" position="after">
+                <field name="smstunnel" invisible="1"/>
+            </field>
+            <xpath expr="//field[@name='recipient_ids']//field[@name='failure_type']" position="after">
+                <field name="failure_reason" class="text-wrap"/>
+            </xpath>
+            <xpath expr="(//footer/button[@name='action_buy_credits'])[1]" position="attributes">
+                <attribute name="invisible">not has_insufficient_credit or smstunnel</attribute>
+            </xpath>
+            <xpath expr="(//footer/button[@name='action_buy_credits'])[2]" position="attributes">
+                <attribute name="invisible">not has_unregistered_account or smstunnel</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

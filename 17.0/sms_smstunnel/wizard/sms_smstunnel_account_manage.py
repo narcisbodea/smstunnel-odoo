@@ -87,7 +87,7 @@ class SmsSmsTunnelAccountManage(models.TransientModel):
         if device_id and device_id not in {device.get('id') for device in devices}:
             return self._notify('warning', message + ' ' + _(
                 "The Phone ID set here is not one of them: copy it again, or leave it empty."))
-        return self._notify('success', message)
+        return self._notify('success', message, sticky=True)
 
     def action_save(self):
         return {'type': 'ir.actions.act_window_close'}
@@ -113,7 +113,7 @@ class SmsSmsTunnelAccountManage(models.TransientModel):
             return _("%(message)s. Try again in a moment.", message=error.message)
         return _("SMSTunnel refused it: %(message)s", message=error.message)
 
-    def _notify(self, notif_type, message):
+    def _notify(self, notif_type, message, sticky=None):
         return {
             'type': 'ir.actions.client',
             'tag': 'display_notification',
@@ -121,6 +121,6 @@ class SmsSmsTunnelAccountManage(models.TransientModel):
                 'title': _("SMSTunnel"),
                 'message': message,
                 'type': notif_type,
-                'sticky': notif_type != 'success',
+                'sticky': notif_type != 'success' if sticky is None else sticky,
             },
         }

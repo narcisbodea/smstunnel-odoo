@@ -21,6 +21,10 @@
                         <li>In the dashboard, open <b>Apps → Add an app</b>, create the key and paste it below.</li>
                         <li>Send a test text to your own number.</li>
                     </ol>
+                    <p class="mb-0 mt-2 small">
+                        Odoo sends each text and its number to SMSTunnel (smstunnel.io), which hands it to your phone.
+                        <a href="https://smstunnel.io/privacy" target="_blank">Privacy policy</a>
+                    </p>
                 </div>
                 <group string="Connection">
                     <field name="company_id" invisible="1"/>
@@ -40,7 +44,7 @@
                     <div class="d-flex align-items-center">
                         <field name="test_number" placeholder="+1 415 555 0123"/>
                         <button name="action_send_test" string="Send a test text" type="object"
-                                icon="fa-paper-plane" class="btn btn-link ms-1"/>
+                                icon="fa-paper-plane" class="btn btn-link ms-2 text-nowrap"/>
                     </div>
                     <div colspan="2">
                         <button name="action_check_connection" string="Check the key and list my phones"

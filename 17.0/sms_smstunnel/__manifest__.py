@@ -22,6 +22,7 @@ in Settings → General Settings → Send SMS.
         'data/ir_cron_data.xml',
         'views/res_config_settings_views.xml',
         'views/sms_sms_views.xml',
+        'wizard/sms_resend_views.xml',
         'wizard/sms_smstunnel_account_manage_views.xml',
     ],
     'images': ['static/description/banner.png'],
