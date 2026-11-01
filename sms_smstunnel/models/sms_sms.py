@@ -10,6 +10,7 @@ class SmsSms(models.Model):
     _inherit = 'sms.sms'
 
     smstunnel_message_id = fields.Char('SMSTunnel message ID', copy=False, readonly=True)
+    smstunnel_failure_reason = fields.Text('SMSTunnel failure reason', copy=False, readonly=True)
     smstunnel_tries = fields.Integer(
         'SMSTunnel tries', copy=False, readonly=True,
         help="How many times SMSTunnel could not be reached for this text. It stays in the queue until it "
@@ -57,16 +58,20 @@ class SmsSms(models.Model):
         return super()._get_send_batch_size()
 
     def _handle_call_result_hook(self, results):
-        """Keep SMSTunnel's message ID, on the text and on its tracker (texts are deleted once sent)."""
+        """Keep SMSTunnel's message ID, on the text and on its tracker (texts are deleted once sent), and
+        SMSTunnel's reason on a text it refused (the chatter only shows the failure type)."""
         smstunnel_sms = self.filtered(lambda sms: sms._get_sms_company().sms_provider == 'smstunnel')
         if smstunnel_sms:
             sms_by_uuid = smstunnel_sms.grouped('uuid')
             for result in results:
-                message_id = result.get('smstunnel_message_id')
                 sms = sms_by_uuid.get(result.get('uuid'))
-                if not sms or not message_id:
+                if not sms:
                     continue
-                sms.smstunnel_message_id = message_id
+                message_id = result.get('smstunnel_message_id')
+                if not message_id:
+                    sms.smstunnel_failure_reason = result.get('failure_reason') or False
+                    continue
+                sms.write({'smstunnel_message_id': message_id, 'smstunnel_failure_reason': False})
                 if sms.sms_tracker_id:
                     sms.sms_tracker_id.write({
                         'smstunnel_message_id': message_id,
