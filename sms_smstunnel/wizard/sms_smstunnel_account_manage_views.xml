@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sms_smstunnel_account_manage_view_form" model="ir.ui.view">
+        <field name="name">sms.smstunnel.account.manage.view.form</field>
+        <field name="model">sms.smstunnel.account.manage</field>
+        <field name="arch" type="xml">
+            <form string="SMSTunnel">
+                <div class="alert alert-info mb-3" role="status">
+                    <p class="mb-1">
+                        Odoo's texts go out from <b>your own Android phone</b>, from <b>your own number</b>:
+                        customers see a number they know and can reply to it. You pay your carrier's usual price.
+                    </p>
+                    <ol class="mb-0 ps-3">
+                        <li>
+                            Install the
+                            <a href="https://play.google.com/store/apps/details?id=io.smstunnel.app" target="_blank">SMSTunnel app from Google Play</a>
+                            on your Android phone and sign in. Sign in at
+                            <a href="https://dashboard.smstunnel.io" target="_blank">dashboard.smstunnel.io</a>
+                            with the same account: the phone appears under <b>Phones</b>.
+                        </li>
+                        <li>In the dashboard, open <b>Apps → Add an app</b>, create the key and paste it below.</li>
+                        <li>Send a test text to your own number.</li>
+                    </ol>
+                </div>
+                <group string="Connection">
+                    <field name="company_id" invisible="1"/>
+                    <field name="smstunnel_api_key" password="True" placeholder="sk_live_..."/>
+                    <field name="smstunnel_device_id" placeholder="Empty: your main phone"/>
+                    <label for="smstunnel_country_code"/>
+                    <div>
+                        <field name="smstunnel_country_code" placeholder="e.g. +40" class="w-25"/>
+                        <div class="text-muted small">
+                            For numbers written without + or 00, such as 0721 123 456.
+                            <field name="smstunnel_country_code_hint" nolabel="1" class="d-inline"/>
+                        </div>
+                    </div>
+                </group>
+                <group string="Check it">
+                    <label for="test_number"/>
+                    <div class="d-flex align-items-center">
+                        <field name="test_number" placeholder="+1 415 555 0123"/>
+                        <button name="action_send_test" string="Send a test text" type="object"
+                                icon="fa-paper-plane" class="btn btn-link ms-1"/>
+                    </div>
+                    <div colspan="2">
+                        <button name="action_check_connection" string="Check the key and list my phones"
+                                type="object" icon="fa-mobile" class="btn btn-secondary"/>
+                    </div>
+                </group>
+                <p class="text-muted small mb-0">
+                    SMSTunnel sends texts people expect (order and delivery updates, reminders, replies),
+                    one text per number. It does not send SMS Marketing mailings.
+                </p>
+                <footer>
+                    <button string="Save" type="object" name="action_save" class="btn-primary" data-hotkey="q"/>
+                    <button string="Discard" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
