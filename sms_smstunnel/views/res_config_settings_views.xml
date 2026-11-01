@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Applied after the core Twilio view (priority 0), which adds the "sms_provider" radio buttons. -->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.sms.smstunnel</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority">30</field>
+        <field name="inherit_id" ref="sms.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sms_provider']" position="after">
+                <div class="content-group" invisible="sms_provider != 'smstunnel'">
+                    <div class="text-muted mt-1">
+                        Texts go out from your own Android phone and number, with the SMSTunnel app.
+                    </div>
+                    <button name="action_open_sms_smstunnel_account_manage" icon="oi-arrow-right"
+                            type="object" class="btn-link" string="Configure SMSTunnel"/>
+                </div>
+            </xpath>
+            <!-- Odoo's credits only matter when Odoo sends the texts. -->
+            <xpath expr="//widget[@service_name='sms']" position="attributes">
+                <attribute name="invisible">sms_provider != 'iap'</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
