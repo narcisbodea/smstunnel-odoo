@@ -27,7 +27,7 @@ Your phone needs the SMSTunnel app from Google Play:
 
 ## Requirements
 
-- **Odoo 17.0, 18.0 or 19.0**, Community or Enterprise, **on Odoo.sh or on your own server**. Odoo Online does not install third-party modules, so it can't use this one.
+- **Odoo 17.0, 18.0 or 19.0**, Community or Enterprise, **on Odoo.sh or on your own server**. Odoo Online does not install third-party modules, so it can't use this one; there, an automation rule can still text your own number through an SMSTunnel webhook ([odoo-online.md](odoo-online.md)).
 - An Odoo build from **September 2025 or later**. The module plugs into the SMS provider choice that Odoo added then with its core *Twilio SMS* module (`sms_twilio`); Odoo installs that module together with this one. Odoo.sh is always recent; on your own server, update Odoo if `sms_twilio` is missing.
 - An **Android phone** with the [SMSTunnel app](https://play.google.com/store/apps/details?id=io.smstunnel.app), signed in to your SMSTunnel account.
 
@@ -75,7 +75,7 @@ Each company chooses its own provider, so in a multi-company database one compan
 
 ## What Odoo shows
 
-Each text gets its own request, one number at a time, and Odoo shows the result the way it does for its own providers (in the chatter, and under **Settings → Technical → SMS** in developer mode):
+Each text gets its own request, one number at a time, and Odoo shows the result the way it does for its own providers (in the chatter, and under **Settings → Technical → Phone / SMS** in developer mode):
 
 | What happened | Odoo shows |
 | --- | --- |
@@ -208,6 +208,8 @@ docker compose -p smst-int-odoo -f tests/e2e/docker-compose.yml down -v
 
 The key file is JSON with an `apiKey` field; the scripts read it and never print it. Point them only at a test server, never at production.
 
+Before pushing the version branches, `python tools/check-store-rules.py` checks each version folder against the Odoo Apps store's rules (manifest, icon, cover, the store page's HTML and wording).
+
 ## Repository layout
 
 ```
@@ -215,7 +217,9 @@ The key file is JSON with an `apiKey` field; the scripts read it and never print
 18.0/sms_smstunnel/   the module for Odoo 18.0
 19.0/sms_smstunnel/   the module for Odoo 19.0
 tests/e2e/            Docker stack and scripts for local tests
-tools/                store page template, release branches
+tools/                store page template and check, release branches
+PUBLISHING.md         the Odoo Apps store: its rules and the owner's steps
+odoo-online.md        Odoo Online without the module: texts to your own number from an automation rule
 ```
 
 The three folders differ only where Odoo does (the cron's fields, the batch size method renamed in 19, `res.partner.mobile` gone in 19, the *Sending Failures* dialog removed in 19). For the Odoo Apps store each version is published from its own branch; `tools/make-release-branches.sh` creates the branches `17.0`, `18.0` and `19.0` from these folders. See [PUBLISHING.md](PUBLISHING.md).
