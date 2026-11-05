@@ -33,7 +33,7 @@ Your phone needs the SMSTunnel app from Google Play:
 
 ## Install
 
-Pick the folder (or, once published, the branch) that matches your Odoo version: `17.0`, `18.0` or `19.0`. Each contains the module folder `sms_smstunnel`.
+Pick the branch (or, on `main`, the folder) that matches your Odoo version: `17.0`, `18.0` or `19.0`. Each contains the module folder `sms_smstunnel`.
 
 **Odoo.sh**
 
@@ -57,7 +57,7 @@ From the Odoo Apps store, the download is the same `sms_smstunnel` folder.
 ## Set it up
 
 1. Install the SMSTunnel app from Google Play on your Android phone and sign in. Sign in at [smstunnel.io](https://smstunnel.io) on your computer with the same account: the phone appears under **Phones** (you can also link it with **Phones → Add phone**).
-2. In your [SMSTunnel dashboard](https://dashboard.smstunnel.io/apps), open **Apps → Add an app**, pick **Script or server**, name it (for example "Odoo") and click **Create the key**. Copy the key: it is shown only once. It can send texts and look up their status.
+2. In your [SMSTunnel dashboard](https://dashboard.smstunnel.io/apps), open **Apps → Add an app**, pick **Odoo** and click **Create the key**. Copy the key: it is shown only once. It can send texts and look up their status.
 3. In Odoo, open **Settings → General Settings**, find **Send SMS** (under *Contacts*), choose **Send via SMSTunnel** and click **Configure SMSTunnel**:
 
    | Field | What it does |
