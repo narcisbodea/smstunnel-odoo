@@ -39,8 +39,8 @@
         <li><b>One number per text</b>, sent from your own SIM.</li>
         <li><b>Odoo's own statuses</b>: Sent, Processing while your phone is offline (the text waits and goes out
             when the phone is back), Delivered, or Error with SMSTunnel's reason.</li>
-        <li><b>Nothing is lost</b> when SMSTunnel can't be reached: texts wait in Odoo's queue and go out later
-            by themselves.</li>
+        <li><b>Tried again by themselves</b> when SMSTunnel can't be reached: texts stay in Odoo's queue and
+            go out later, up to 8 tries. After that they show as failed, and Resend puts them back in the queue.</li>
         <li><b>Per company</b>: each company chooses Odoo, Twilio or SMSTunnel.</li>
     </ul>
     <div class="text-center my-4">
