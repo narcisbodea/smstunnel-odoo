@@ -8,12 +8,22 @@ Checked on 5 November 2026 against Odoo's code (the webhook action is the same i
 
 ## What you need
 
-- An SMSTunnel account with a password (the account of your phone's app) and the SMSTunnel app on your Android phone.
+- An SMSTunnel account, the one your phone's app is signed in to, and the SMSTunnel app on your Android phone.
 - Odoo Online (or any Odoo 17 or later) and an administrator who can turn on developer mode. Odoo Studio is not needed.
 
 ## 1. Make the webhook in SMSTunnel
 
-The dashboard has no page for webhooks yet, so this takes two calls to SMSTunnel's API (macOS or Linux terminal; on Windows, Git Bash or WSL).
+In your [dashboard](https://dashboard.smstunnel.io/apps/webhooks?new=odoo), open **Apps → Webhooks → New webhook** and pick **Odoo Online**. That fills in the name, *Odoo: confirmed orders*, and the text of the message, `New order {{name}}: {{amount_total}}`, with Odoo's field names in `{{ }}` (step 2 shows where to find them).
+
+Add the number that gets the texts, with `+` and the country code. A webhook takes up to 10 numbers and each one gets its own text; for alerts to yourself, keep one. Leave **Calls an hour, at most** on 20 unless you need more, and click **Create the webhook**.
+
+Copy the address, `https://smstunnel.io/api/v1/webhook/<token>`. Keep it secret: whoever has it can make SMSTunnel text the numbers of this webhook. You can copy it again later under **Address and setup**, which also shows the Odoo steps below with the address in them, and **Send a test**.
+
+One webhook per kind of text: for leads too, make a second one with its own text.
+
+### Or with the API
+
+For a script, the same webhook takes two calls to SMSTunnel's API (macOS or Linux terminal; on Windows, Git Bash or WSL).
 
 Sign in with your SMSTunnel email and password, and keep the sign-in token (sign in again if a call answers 401; a `"` or `\` in the password needs a `\` before it):
 
@@ -35,9 +45,7 @@ curl -s https://smstunnel.io/api/v1/webhooks -H "Authorization: Bearer $TOKEN" -
 }'
 ```
 
-The answer has a `token`. Your webhook address is `https://smstunnel.io/api/v1/webhook/<token>`. Keep it secret: whoever has it can make SMSTunnel text the numbers of this webhook. Each recipient gets its own text; for alerts to yourself, keep one number.
-
-One webhook per kind of text: for leads too, make a second one with its own text.
+The answer has a `token`. Your webhook address is `https://smstunnel.io/api/v1/webhook/<token>`, and the dashboard lists the webhook like one made there.
 
 ## 2. Make the automation rule in Odoo
 
@@ -47,12 +55,12 @@ One webhook per kind of text: for leads too, make a second one with its own text
 4. **Actions To Do → Add an action**, type **Send Webhook Notification**:
    - **URL**: your webhook address.
    - **Fields**: the fields your text uses, here *Order Reference* (`name`) and *Total* (`amount_total`). The **Sample Payload** shows the names to write between `{{ }}`.
-5. Save, and confirm an order: the text reaches your phone's number.
+5. Save, and confirm an order: the text reaches the webhook's numbers.
 
 Good to know about Odoo's side:
 
 - Odoo sends the fields of the rule's own model only. A many-to-one field arrives as a number (`partner_id: 7`), not the customer's name, so use the record's own text fields (on a lead: `contact_name`, `partner_name`).
-- Odoo waits 1 second for SMSTunnel and never sends the same call again. When a call fails, only Odoo's server log says so, and Odoo Online doesn't show you that log: check **Messages** in your SMSTunnel dashboard instead.
+- Odoo waits 1 second for SMSTunnel and never sends the same call again. When a call fails, only Odoo's server log says so, and Odoo Online doesn't show you that log: check **Messages** in your SMSTunnel dashboard instead, and the webhook's row in **Apps → Webhooks**, which says why its last call sent no text.
 - Odoo 19 and later call the webhook once the record is saved. Odoo 17 and 18 call it during the save, so a save that fails afterwards may still have texted you.
 - A rule on *On save* (17, 18) or *On create and edit* (19 and later) runs at every save of a matching record. Set a **Before Update Domain** so each record texts once.
 - Odoo writes the webhook address in its server log.
@@ -85,23 +93,23 @@ In the text, `1250.0` became `1250`; dates and times are UTC, as `2026-11-05 09:
 ## Limits
 
 - Texts are cut at 480 characters.
-- Each webhook sends at most `maxPerHour` texts an hour (20 unless you set another number, up to 500), and takes 60 calls a minute. Above that it answers 429 and Odoo drops the call.
+- Each webhook takes at most its **Calls an hour** (`maxPerHour`: 20 unless you set another number, up to 500), and 60 calls a minute. The hourly limit counts calls, not texts: each call texts every number of the webhook. Above that it answers 429 and Odoo drops the call.
 - Your SMSTunnel plan's daily limits apply, as for any text. If your phone is offline, the texts wait and go out when it is back.
 
 ## When nothing arrives
 
 | What you see | What to do |
 | --- | --- |
-| 404 `Webhook not found or disabled` | The address is wrong, the webhook was deleted, or it was turned off. |
-| 429 `Rate limit reached for this webhook (20/hour)` | Wait, or raise `maxPerHour` with `PATCH /api/v1/webhooks/<id>` (with the sign-in token). |
-| The text is Odoo's raw data (`{"_action":...}`) | The webhook has no `messageTemplate`; add one with the same `PATCH`. |
+| 404 `Webhook not found or disabled` | The address is wrong or was replaced with **New address**, or the webhook was stopped or deleted. |
+| 429 `Rate limit reached for this webhook (20/hour)` | Wait, or raise **Calls an hour** with **Edit** in **Apps → Webhooks** (with the API: `maxPerHour`, `PATCH /api/v1/webhooks/<id>` and the sign-in token). |
+| The text is Odoo's raw data (`{"_action":...}`) | The webhook's text of the message is empty: write one with **Edit** (with the API: `messageTemplate`, same `PATCH`). |
 | The text has gaps | The names in `{{ }}` don't match the Sample Payload, or the field isn't picked under **Fields**. |
 
-To test without Odoo, send what Odoo would:
+To test without Odoo, use **Send a test** under **Address and setup**, which texts every number of the webhook, or send what Odoo would:
 
 ```bash
 curl -s https://smstunnel.io/api/v1/webhook/<token> -H "Content-Type: application/json" \
   -d '{"_model": "sale.order", "_id": 42, "name": "S00042", "amount_total": 1250.0}'
 ```
 
-If the address leaks, make a new one with `POST /api/v1/webhooks/<id>/rotate` (the old one stops at once) and put it in the rule.
+If the address leaks, make a **New address** from the webhook's menu in **Apps → Webhooks** (with the API: `POST /api/v1/webhooks/<id>/rotate`). The old one stops at once; put the new one in the rule.
