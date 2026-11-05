@@ -4,19 +4,27 @@
             <h2 class="mb-2" style="color:#2240ae; font-weight:700;">SMSTunnel SMS</h2>
             <p class="lead mb-3">Odoo's texts from your own Android phone and your own number.</p>
             <p>
-                Choose <b>Send via SMSTunnel</b> next to <i>Send via Odoo</i> and <i>Send via Twilio</i> in
-                Settings. From then on, every text Odoo sends for this company goes out from your own Android
-                phone, with the SMSTunnel app: customers see a number they know and can reply to it, and each
-                text costs what your carrier charges.
+                Choose <b>Send via SMSTunnel</b> in Settings, next to <i>Send via Odoo</i> and <i>Send via
+                Twilio</i>. From then on, the texts Odoo sends for that company go out from your Android phone,
+                with the SMSTunnel app. Customers see a number they know and can reply to it, and each text goes
+                on your phone's own plan.
             </p>
-            <p class="mb-0 p-3 rounded" style="background-color:#eef3ff; border-left:4px solid #2240ae;">
-                <b>Needs an SMSTunnel account and the SMSTunnel app</b> on an Android phone (the app is on
-                Google Play; accounts and plans at smstunnel.io). Odoo sends each text and its number to
-                SMSTunnel, which hands it to your phone. Privacy policy: smstunnel.io/privacy.
-            </p>
+            <div class="p-3 rounded bg-light" style="border-left:4px solid #2240ae;">
+                <p class="mb-1"><b>What you need</b></p>
+                <ul class="mb-2">
+                    <li>An SMSTunnel account (smstunnel.io). This app sends through that service.</li>
+                    <li>An Android phone with the SMSTunnel app from Google Play, signed in to that account.</li>
+                    <li>Odoo 17.0 on Odoo.sh or on your own server, built in September 2025 or later.</li>
+                </ul>
+                <p class="mb-0 small">
+                    Odoo sends SMSTunnel each text with its number, and the Phone ID and country code you set;
+                    SMSTunnel hands the text to your phone. Nothing else leaves your database. Privacy policy:
+                    smstunnel.io/privacy.
+                </p>
+            </div>
         </div>
         <div class="col-md-4 text-center mt-4 mt-md-0">
-            <img src="icon.png" alt="SMSTunnel" style="width:128px; height:128px;"/>
+            <img src="icon.png" alt="SMSTunnel" width="128" height="128"/>
             <p class="mt-2 mb-0 text-muted">For Odoo 17.0 &middot; Community and Enterprise</p>
         </div>
     </div>
@@ -24,57 +32,17 @@
 
 <section class="container">
     <h3 class="mt-4 mb-3">What it does</h3>
-    <div class="row">
-        <div class="col-md-6">
-            <ul>
-                <li><b>Works with everything in Odoo that sends texts</b>: the SMS button on contacts and other
-                    records, SMS templates such as the delivery confirmation of Inventory, automated actions with
-                    "Send SMS", calendar and event reminders.</li>
-                <li><b>One text per number</b>, sent from your own SIM.</li>
-                <li><b>Odoo's own statuses</b> in the chatter: Sent, Processing while your phone is offline (the
-                    text waits and goes out when the phone is back), Delivered, or an error with SMSTunnel's
-                    reason.</li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <ul>
-                <li><b>Nothing is lost when SMSTunnel can't be reached</b>: texts wait in Odoo's queue and go out
-                    later, automatically.</li>
-                <li><b>Per company</b>: each company chooses Odoo, Twilio or SMSTunnel.</li>
-                <li><b>Check it from Settings</b>: send a test text and list the phones of your account.</li>
-                <li><b>Texts people expect</b>: order and delivery updates, reminders, replies. Texts of SMS
-                    Marketing mailings are refused.</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <h3 class="mt-4 mb-3">Set it up in three steps</h3>
-    <ol>
-        <li>Install the SMSTunnel app from Google Play on your Android phone and sign in. Sign in at
-            dashboard.smstunnel.io with the same account: the phone appears under <b>Phones</b>.</li>
-        <li>In the dashboard, open <b>Apps &rarr; Add an app</b> and copy the new key.</li>
-        <li>In Odoo, open <b>Settings &rarr; General Settings &rarr; Send SMS</b>, choose
-            <b>Send via SMSTunnel</b>, click <b>Configure SMSTunnel</b>, paste the key and send a test text to
-            your own number.</li>
-    </ol>
-    <div class="text-center my-4">
-        <img src="configure_screenshot.png" class="img-fluid rounded shadow" alt="The SMSTunnel settings in Odoo"/>
-        <p class="text-muted mt-2">The key, an optional phone (Phone ID) and the country code that completes local numbers.</p>
-    </div>
-    <div class="text-center my-4">
-        <img src="settings.png" class="img-fluid rounded shadow" alt="Send via SMSTunnel in General Settings"/>
-        <p class="text-muted mt-2">Settings &rarr; General Settings &rarr; Send SMS.</p>
-    </div>
-    <div class="text-center my-4">
-        <img src="test_text.png" class="img-fluid rounded shadow" alt="A test text sent from Settings"/>
-        <p class="text-muted mt-2">A test text from Settings: SMSTunnel took it and the phone sends it.</p>
-    </div>
-</section>
-
-<section class="container">
-    <h3 class="mt-4 mb-3">Your texts in Odoo</h3>
+    <ul>
+        <li><b>Every text Odoo sends</b> for the company: the SMS button on contacts and other records, SMS
+            templates such as the delivery confirmation of Inventory, automation rules with "Send SMS", calendar
+            and event reminders.</li>
+        <li><b>One number per text</b>, sent from your own SIM.</li>
+        <li><b>Odoo's own statuses</b>: Sent, Processing while your phone is offline (the text waits and goes out
+            when the phone is back), Delivered, or Error with SMSTunnel's reason.</li>
+        <li><b>Nothing is lost</b> when SMSTunnel can't be reached: texts wait in Odoo's queue and go out later
+            by themselves.</li>
+        <li><b>Per company</b>: each company chooses Odoo, Twilio or SMSTunnel.</li>
+    </ul>
     <div class="text-center my-4">
         <img src="contact.png" class="img-fluid rounded shadow" alt="Texts in the chatter of a contact"/>
         <p class="text-muted mt-2">Texts sent from a contact, in its chatter, as with any other provider.</p>
@@ -86,28 +54,73 @@
 </section>
 
 <section class="container">
+    <h3 class="mt-4 mb-3">Set it up in three steps</h3>
+    <ol>
+        <li class="mb-3"><b>Create a key.</b> Sign in at dashboard.smstunnel.io with the account of your phone's
+            app (the phone appears under <b>Phones</b>). Open <b>Apps &rarr; Add an app</b>, pick <b>Odoo</b> and
+            click <b>Create the key</b>. Copy the key: it is shown only once.</li>
+        <li class="mb-3"><b>Choose SMSTunnel in Odoo.</b> Open <b>Settings &rarr; General Settings &rarr; Send
+            SMS</b>, choose <b>Send via SMSTunnel</b> and click <b>Configure SMSTunnel</b>. Paste the key under
+            <b>SMSTunnel API key</b>. Two optional fields: <b>Phone ID</b> picks which of your phones sends (empty:
+            your main phone), and <b>Default country code</b> completes numbers written without + or 00 (empty:
+            the company's country).</li>
+        <li class="mb-3"><b>Send a test text.</b> Type your own number under <b>Test number</b>, click <b>Send a
+            test text</b>, then <b>Save</b>. The text reaches you from your phone's number. <b>Check the key and
+            list my phones</b> shows whether your phones are online.</li>
+    </ol>
+    <div class="text-center my-4">
+        <img src="settings.png" class="img-fluid rounded shadow" alt="Send via SMSTunnel in General Settings"/>
+        <p class="text-muted mt-2">Step 2: Settings &rarr; General Settings &rarr; Send SMS.</p>
+    </div>
+    <div class="text-center my-4">
+        <img src="configure_screenshot.png" class="img-fluid rounded shadow" alt="The SMSTunnel settings in Odoo"/>
+        <p class="text-muted mt-2">Step 2: the key, an optional phone and the country code for local numbers.</p>
+    </div>
+    <div class="text-center my-4">
+        <img src="test_text.png" class="img-fluid rounded shadow" alt="A test text sent from Settings"/>
+        <p class="text-muted mt-2">Step 3: SMSTunnel took the test text and your phone sends it.</p>
+    </div>
+</section>
+
+<section class="container">
+    <h3 class="mt-4 mb-3">What it doesn't do</h3>
+    <ul>
+        <li><b>Odoo Online</b>: it can't be installed there, because Odoo Online doesn't accept third-party
+            modules. It runs on Odoo.sh and on your own server.</li>
+        <li><b>Texts of Odoo's <i>SMS Marketing</i> app</b> are refused and marked as failed, with the reason.
+            Keep Odoo's credits or Twilio for a company that sends those.</li>
+        <li><b>Replies</b> don't come into Odoo: customers reply to your phone's number, and the replies arrive on
+            your phone.</li>
+        <li><b>Without your phone</b> nothing goes out: while it is off or offline, texts wait (up to 3 days) and
+            leave when it is back.</li>
+    </ul>
+</section>
+
+<section class="container">
     <h3 class="mt-4 mb-3">Good to know</h3>
     <ul>
-        <li><b>Where it runs</b>: Odoo.sh and Odoo on your own server. Odoo Online does not install third-party
-            apps.</li>
-        <li><b>Requirements</b>: Odoo 17.0 with the core <i>Twilio SMS</i> module (sms_twilio, part of
-            Odoo since September 2025), which Odoo installs together with this app. Nothing else to install on
-            the server.</li>
-        <li><b>Numbers</b>: in international format (+ and the country code) whenever possible; a default
-            country code completes local numbers.</li>
-        <li><b>Limits</b>: up to 1600 characters per text; SMSTunnel takes 30 texts a minute, and Odoo's queue
+        <li><b>Limits</b>: up to 1600 characters per text. SMSTunnel takes 30 texts a minute, and Odoo's queue
             sends the rest a little later.</li>
-        <li><b>The API key</b> is stored on the company and only Settings administrators can read it. A copy of
-            the database made by Odoo.sh for staging, or by <i>odoo-bin neutralize</i>, loses the key, so it
+        <li><b>Numbers</b>: international format (+ and the country code) whenever possible; the default country
+            code completes local numbers.</li>
+        <li><b>The API key</b> is stored on the company, and only Settings administrators can read it. A copy of
+            the database made by Odoo.sh for staging, or by <i>odoo-bin neutralize</i>, loses the key, so a copy
             never texts real customers.</li>
-        <li><b>For developers</b>: texts created in code (<i>sms.sms</i>) go through SMSTunnel too; mark sign-in
-            codes with <i>smstunnel_sign_in_code</i> to use the separate allowance for codes.</li>
+        <li><b>Automation rules</b>: a rule on <i>On save</i> runs at every save of a matching record.
+            Set a <i>Before Update Domain</i> (developer mode) so each record gets one text.</li>
+        <li><b>Developers</b>: texts created in code (<i>sms.sms</i>) go through SMSTunnel too; mark sign-in codes
+            with <i>smstunnel_sign_in_code</i>.</li>
     </ul>
 </section>
 
 <section class="container">
     <div class="p-3 my-4 rounded bg-light">
-        <p class="mb-1">Questions? Write to <a href="mailto:contact@narboweb.ro">contact@narboweb.ro</a>.</p>
+        <h3 class="mt-0 mb-2">Support</h3>
+        <p class="mb-1">
+            Questions or a problem? Write to <a href="mailto:contact@narboweb.ro">contact@narboweb.ro</a> with
+            your Odoo version and what Odoo shows on the text (in developer mode: Settings &rarr; Technical
+            &rarr; Phone / SMS).
+        </p>
         <p class="mb-0 text-muted small">
             SMSTunnel SMS is made by NARBOWEB SRL. It is not affiliated with, endorsed by, or sponsored by Odoo
             S.A. Odoo is a trademark of Odoo S.A. Android and Google Play are trademarks of Google LLC.
