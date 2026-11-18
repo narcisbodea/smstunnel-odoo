@@ -52,7 +52,7 @@ Pick the branch (or, on `main`, the folder) that matches your Odoo version: `17.
 1. Copy the `sms_smstunnel` folder of your version into a folder listed in `addons_path`, and restart Odoo.
 2. **Apps → Update Apps List** (developer mode), search for **SMSTunnel**, click **Activate**.
 
-From the Odoo Apps store, the download is the same `sms_smstunnel` folder.
+From the [Odoo Apps store](https://apps.odoo.com/apps/modules/19.0/sms_smstunnel) (17.0, 18.0 and 19.0), the download is the same `sms_smstunnel` folder.
 
 ## Set it up
 

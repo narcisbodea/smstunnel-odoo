@@ -1,6 +1,6 @@
 # Publishing SMSTunnel SMS (`sms_smstunnel`) on the Odoo Apps store
 
-People get the module from **GitHub** (an Odoo.sh submodule, or a copy on their own server) and from the **Odoo Apps store** (apps.odoo.com), which reads this same public repository: one branch per Odoo version (`17.0`, `18.0`, `19.0`), each with `sms_smstunnel/` at its root. The branches are on GitHub. What's left is registering them on apps.odoo.com, which only the owner can do (section 2).
+People get the module from **GitHub** (an Odoo.sh submodule, or a copy on their own server) and from the **Odoo Apps store** (apps.odoo.com), which reads this same public repository: one branch per Odoo version (`17.0`, `18.0`, `19.0`), each with `sms_smstunnel/` at its root. The three branches have been registered on apps.odoo.com since 18 November 2026, under the owner's account, and the three apps are published: <https://apps.odoo.com/apps/modules/19.0/sms_smstunnel> (and the same with `17.0` and `18.0`). Section 2 is how it was done.
 
 ## 1. What the store requires
 
@@ -53,7 +53,7 @@ Nothing else is needed: the repository is public, so no deploy key and no GitHub
 
 1. Change the code in the version folders on `main`, raise `version` in each changed `__manifest__.py` (`17.0.1.0.1`, ...), run `python tools/check-store-rules.py` and the tests (README → Tests), and commit. A change to the store page alone needs no new version.
 2. `tools/make-release-branches.sh`, then `git push origin main 17.0 18.0 19.0`.
-3. The store scans the registered branches for new commits; **Scan** on <https://apps.odoo.com/apps/dashboard/repos> does it at once. If the new version doesn't show within a day, write to apps@odoo.com.
+3. Press **Scan** on each registered branch at <https://apps.odoo.com/apps/dashboard/repos>. Daily scanning (the checkbox next to Scan) is off, so the store sees a new commit only after you scan; that keeps a bad manifest from going live on its own. If the new version doesn't show within a day, write to apps@odoo.com.
 
 The page text: edit `tools/description-template.html`, then `tools/build-descriptions.sh` (no argument) writes the three `index.html`. New screenshots: put them in a folder named like `D:\ANDROID\integrari\odoo-screens\store` (`icon.png`, `banner.png`, `odoo<NN>-configure.png`, `-settings`, `-test-text`, `-contact`, `-failure`) and run `tools/build-descriptions.sh <folder>`.
 
